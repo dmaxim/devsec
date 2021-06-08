@@ -17,3 +17,7 @@ provider "azurerm" {
   tenant_id       = var.azure-tenant-id
   features {}
 }
+
+provider "random" {
+
+}

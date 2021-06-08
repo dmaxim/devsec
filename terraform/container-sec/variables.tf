@@ -37,6 +37,10 @@ variable "admin-user" {
   description = "Admin user name"
 }
 
+variable "admin-ssh-key-path" {
+  type        = string
+  description = "Path to the authorized keys file"
+}
 variable "jenkins-vm-size" {
   type        = string
   description = "Size for Jenkins VM"
