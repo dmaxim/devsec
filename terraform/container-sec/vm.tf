@@ -34,7 +34,7 @@ resource "azurerm_virtual_machine" "jenkins-vm-01" {
     name              = join("-", ["disk", var.namespace, var.environment, "001"])
     caching           = "ReadWrite"
     create_option     = "FromImage"
-    managed_disk_type = "Premium_LRS"
+    managed_disk_type = "Standard_LRS"
   }
 
   storage_image_reference {
