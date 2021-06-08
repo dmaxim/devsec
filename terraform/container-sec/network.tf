@@ -71,6 +71,34 @@ resource "azurerm_network_security_rule" "jenkins-443" {
 }
 
 
+resource "azurerm_network_security_rule" "jenkins-8080" {
+  name                        = "Port_8080"
+  priority                    = 350
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "8080"
+  source_address_prefix       = var.authorized-ips
+  destination_address_prefix  = "*"
+  resource_group_name         = azurerm_resource_group.cloud-sec-rg.name
+  network_security_group_name = azurerm_network_security_group.cloud-sec-nsg.name
+}
+
+
+resource "azurerm_network_security_rule" "jenkins-50000" {
+  name                        = "Port_50000"
+  priority                    = 360
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "50000"
+  source_address_prefix       = var.authorized-ips
+  destination_address_prefix  = "*"
+  resource_group_name         = azurerm_resource_group.cloud-sec-rg.name
+  network_security_group_name = azurerm_network_security_group.cloud-sec-nsg.name
+}
 # Create public ip for the vm
 resource "azurerm_public_ip" "jenkins-public-ip" {
   name                = join("-", ["pip", var.namespace, var.environment, "01"])
